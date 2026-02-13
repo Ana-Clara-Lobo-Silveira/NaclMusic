@@ -82,7 +82,7 @@
                     <p class="menu-label">Categorias</p>
                     <ul class="menu-list">
                         {%for genero in genero_html%}
-                        <li><a href="#"><span class="icon"><i class="fa-solid fa-compact-disc"></i></span>{{genero.nome_genero}}</a></li>
+                        <li ><a href="#" style="color: {{genero.cor}};"><span class="icon"><i class="fa-solid fa-compact-disc"></i></span>{{genero.nome_genero}}</a></li>
                         {%endfor%}
                     </ul>
                 </div>
