@@ -17,10 +17,14 @@ def pg_principal():
     cur = con.cursor(dictionary=True)
     cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;")
     musicas = cur.fetchall()
+
+    cur.execute("SELECT nome_genero, icone, cor FROM genero;")
+    generos = cur.fetchall()
     con.close()
 
 
-    return render_template("principal.html", musicas_html=musicas)
+
+    return render_template("principal.html", musicas_html=musicas, genero_html = generos)
 
 # @app.route("/admin")
 # def pg_administracao():
