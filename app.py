@@ -15,7 +15,8 @@ def pg_principal():
 @app.route("/admin")
 def pg_administracao():
     musicas = recuperar_musicas()
-    return render_template("administracao.html", musicas_html = musicas)
+    generos = recuperar_generos()
+    return render_template("administracao.html", musicas_html = musicas, genero_html = generos)
 
 
 
