@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, session
-from musica import recuperar_musicas
-from genero import recuperar_generos
-import mysql.connector
+from model.musica import recuperar_musicas
+from model.genero import recuperar_generos
+
 
 app = Flask(__name__)
 
