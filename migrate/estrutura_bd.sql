@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS musica (
  CONSTRAINT fk_musica_genero FOREIGN KEY (nome_genero) REFERENCES genero (nome_genero)
 );
  
-drop database NaclMusic;
+-- drop database NaclMusic;

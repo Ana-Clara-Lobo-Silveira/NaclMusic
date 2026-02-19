@@ -1,4 +1,6 @@
 from flask import Flask, render_template, redirect, request, session
+from musica import recuperar_musicas
+from genero import recuperar_generos
 import mysql.connector
 
 app = Flask(__name__)
@@ -6,29 +8,14 @@ app = Flask(__name__)
 @app.route("/", methods = ["GET"])
 def pg_principal():
 
-    #conectando bd
-    con = mysql.connector.connect(
-        host="localhost",
-        port = 3306,
-        user = "root",
-        password="root",
-        database = "NaclMusic"
-    )
-    cur = con.cursor(dictionary=True)
-    cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;")
-    musicas = cur.fetchall()
-
-    cur.execute("SELECT nome_genero, icone, cor FROM genero;")
-    generos = cur.fetchall()
-    con.close()
-
-
-
+    musicas = recuperar_musicas()
+    generos = recuperar_generos()
     return render_template("principal.html", musicas_html=musicas, genero_html = generos)
 
-# @app.route("/admin")
-# def pg_administracao():
-#     return render_template("administracao.html")
+@app.route("/admin")
+def pg_administracao():
+    musicas = recuperar_musicas()
+    return render_template("administracao.html", musicas_html = musicas)
 
 
 
