@@ -125,7 +125,7 @@
                 <tbody>
                     {%for musica in musicas_html%}
                     <tr>
-                        <td class="has-text-centered has-text-link is-family-monospace">1</td>
+                        <td class="has-text-centered has-text-link is-family-monospace">{{musica.codigo}}</td>
                         <td style="width: 80px;">
                             <figure class="image is-48x48">
                                 <img src="{{musica.url_imagem}}" class="is-rounded" style="object-fit: cover;">
