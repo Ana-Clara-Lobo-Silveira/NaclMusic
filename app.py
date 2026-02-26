@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request, session
-from model.musica import recuperar_musicas, salvar_musica, excluir_musica
+from model.musica import recuperar_musicas, salvar_musica, excluir_musica, status_musica
 from model.genero import recuperar_generos
 
 
@@ -38,7 +38,10 @@ def deletar_musica(codigo):
     excluir_musica(codigo)
     return redirect("/admin")
 
-
+@app.route("/musica/ativar/<ativar>/<codigo>")
+def ativar_musica(ativar, codigo):
+    status_musica(ativar, codigo)
+    return redirect("/admin")
 
 if __name__ == "__main__":
     app.run(debug=True)

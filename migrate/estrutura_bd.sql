@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS musica (
  CONSTRAINT fk_musica_genero FOREIGN KEY (nome_genero) REFERENCES genero (nome_genero)
 );
  
+ alter table musica add column ativo bool default 0;
 drop database NaclMusic;
 
 select * from musica;

@@ -3,7 +3,7 @@ from database.conexao import Conexao
 def recuperar_musicas():
     # passo um e dois
     con, cur = Conexao.conectar()
-    cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica;")
+    cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica;")
     musicas = cur.fetchall()
     con.close()
 
@@ -28,5 +28,11 @@ def salvar_musica(nome: str, cantor: str, duracao: str, url_imagem: str, genero:
 def excluir_musica(codigo: int):
         con, cur = Conexao.conectar()
         cur.execute("DELETE FROM musica WHERE codigo = %s", [codigo] )
+        con.commit()
+        con.close()
+
+def status_musica(ativo:bool,codigo:int):
+        con, cur = Conexao.conectar()
+        cur.execute("UPDATE musica SET ativo = %s WHERE codigo = %s", [ativo, codigo] )
         con.commit()
         con.close()
