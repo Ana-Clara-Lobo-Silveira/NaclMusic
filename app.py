@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, session
-from model.musica import recuperar_musicas, salvar_musica
+from model.musica import recuperar_musicas, salvar_musica, excluir_musica
 from model.genero import recuperar_generos
+
 
 
 
@@ -32,7 +33,10 @@ def api_ins_musica():
     else:
         return "Erro"
 
-
+@app.route("/musica/delete/<codigo>")
+def deletar_musica(codigo):
+    excluir_musica(codigo)
+    return redirect("/admin")
 
 
 
