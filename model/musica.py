@@ -24,3 +24,9 @@ def salvar_musica(nome: str, cantor: str, duracao: str, url_imagem: str, genero:
     except Exception as erro:
         print(erro)
         return False
+    
+def excluir_musica(codigo: int):
+        con, cur = Conexao.conectar()
+        cur.execute("DELETE FROM musica WHERE codigo = %s", [codigo] )
+        con.commit()
+        con.close()
