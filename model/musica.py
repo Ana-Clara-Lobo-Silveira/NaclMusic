@@ -8,6 +8,8 @@ def recuperar_musicas(ativos:bool=False):
         cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica;")
     else:
         cur.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero, ativo FROM musica  WHERE ativo = 1;")
+    
+    
     musicas = cur.fetchall()
     con.close()
 

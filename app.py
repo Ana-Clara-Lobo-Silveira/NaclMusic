@@ -43,5 +43,9 @@ def ativar_musica(ativar, codigo):
     status_musica(ativar, codigo)
     return redirect("/admin")
 
+@app.route("/cadastro")
+def pg_cadastro():
+    return render_template("cadastro.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
