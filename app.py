@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/", methods = ["GET"])
 def pg_principal():
 
-    musicas = recuperar_musicas()
+    musicas = recuperar_musicas(True)
     generos = recuperar_generos()
     return render_template("principal.html", musicas_html=musicas, genero_html = generos)
 
