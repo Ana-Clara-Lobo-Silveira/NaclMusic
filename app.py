@@ -8,9 +8,6 @@ from model.cadastro import cadastro
 
 app = Flask(__name__)
 
-@app.route("/cadastro", methods = ["GET"])
-def pg_cadastro_get():
-    return render_template("cadastro.html")
 
 @app.route("/", methods = ["GET"])
 def pg_principal():
@@ -48,14 +45,22 @@ def ativar_musica(ativar, codigo):
     status_musica(ativar, codigo)
     return redirect("/admin")
 
+@app.route("/cadastro", methods = ["GET"])
+def pg_cadastro_get():
+    return render_template("cadastro.html")
+
 @app.route("/cadastro", methods = ["POST"])
 def pg_cadastro():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
     if cadastro(usuario, senha):
-        return redirect("/admin")
+        return redirect("/")
     else:
         return "Complete as informações corretamente"
+    
+@app.route("/login", methods = ["GET"])
+def pg_login():
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
