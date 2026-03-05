@@ -55,3 +55,9 @@ VALUES
 "Hip-Hop")
 ;
 
+INSERT INTO `naclmusic`.`cadastro`
+(`usuario`,
+`senha`)
+VALUES
+("Ana Clara", "1234");
+

@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS musica (
 );
  
  alter table musica add column ativo bool default 0;
+ 
+
 drop database NaclMusic;
 
 select * from musica;
