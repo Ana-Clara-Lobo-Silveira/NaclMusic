@@ -4,7 +4,7 @@ INSERT INTO `naclmusic`.`genero`
 `cor`)
 VALUES
 ("Metal","","#FFFFFF"),
-("Rock","","#8B0000"),
+("Rock","","#8B0000
 ("MPB","","#B22222"),
 ("Pop","","#A52A2A"),
 ("Funk","","#DC143C"),
