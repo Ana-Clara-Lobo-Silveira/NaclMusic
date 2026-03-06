@@ -1,3 +1,7 @@
 from model.musica import status_musica
-# excluir_musica(1)
-status_musica(1,5)
+from model.cadastro import verifica_cadastrado
+
+
+retorno = verifica_cadastrado("aa","aa")
+print (retorno)
+
