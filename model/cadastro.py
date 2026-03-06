@@ -12,3 +12,11 @@ def cadastro(usuario:str, senha:str):
         print(erro)
         return False
     
+def verifica_cadastrado(usuario:str, senha:str) -> list:
+        """Verifica o cadastro do usuário, caso esteja cadastrado retorna todos os dados, ao contrário retorbna "None"."""
+        con, cur  = Conexao.conectar()
+        cur.execute("SELECT * FROM cadastro WHERE  usuario = %s AND senha=%s", [usuario, senha])
+        g_usuario = cur.fetchone()
+        con.close()
+
+        return g_usuario

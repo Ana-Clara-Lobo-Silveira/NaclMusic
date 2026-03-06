@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, request, session
 from model.musica import recuperar_musicas, salvar_musica, excluir_musica, status_musica
 from model.genero import recuperar_generos
 from model.cadastro import cadastro
+from model.cadastro import verifica_cadastrado
+
 
 
 
@@ -54,13 +56,22 @@ def pg_cadastro():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
     if cadastro(usuario, senha):
-        return redirect("/")
+        return redirect("/admin")
     else:
         return "Complete as informações corretamente"
     
 @app.route("/login", methods = ["GET"])
-def pg_login():
+def pg_login_get():
     return render_template("login.html")
+
+@app.route("/login", methods = ["POST"])
+def pg_login():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+    if verifica_cadastrado(usuario,senha):
+        return redirect("/admin")
+    else:
+        return "Complete as informações corretamente"
 
 if __name__ == "__main__":
     app.run(debug=True)
