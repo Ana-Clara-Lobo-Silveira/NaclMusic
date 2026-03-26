@@ -23,4 +23,4 @@ CREATE TABLE IF NOT EXISTS musica (
 
 drop database NaclMusic;
 
-select * from musica;
+select * from cadastr;
