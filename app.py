@@ -9,7 +9,7 @@ from model.cadastro import verifica_cadastrado
 
 
 app = Flask(__name__)
-
+app.secret_key = "AnaNara"
 
 @app.route("/", methods = ["GET"])
 def pg_principal():
@@ -20,6 +20,9 @@ def pg_principal():
 
 @app.route("/admin")
 def pg_administracao():
+    if "usuario_log" not in session:
+        return redirect("/login")
+    
     musicas = recuperar_musicas()
     generos = recuperar_generos()
     return render_template("administracao.html", musicas_html = musicas, genero_html = generos)
@@ -69,9 +72,10 @@ def pg_login():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
     if verifica_cadastrado(usuario,senha):
+        session["usuario_log"] = usuario
         return redirect("/admin")
     else:
-        return "Complete as informações corretamente"
+        return redirect("/login")
 
 if __name__ == "__main__":
     app.run(debug=True)
