@@ -12,7 +12,7 @@ class Conexao():
                 port = 3306,
                 user = "root",
                 password="root",
-                database = "NaclMusic"
+                database = "naclmusic"
             )
             cur = con.cursor(dictionary=True)
         else:
@@ -21,7 +21,7 @@ class Conexao():
                 port = 23340,
                 user = "avnadmin",
                 password="AVNS_2VJEs0HZhnTymSnnDJj",
-                database = "NaclMusic"
+                database = "naclmusic"
             )
             cur = con.cursor(dictionary=True)
 
