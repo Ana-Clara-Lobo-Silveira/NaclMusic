@@ -21,7 +21,7 @@ class Conexao():
                 port = 23340,
                 user = "avnadmin",
                 password="AVNS_2VJEs0HZhnTymSnnDJj",
-                database = "defaultdb"
+                database = "NaclMusic"
             )
             cur = con.cursor(dictionary=True)
 
